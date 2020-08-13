@@ -22,6 +22,7 @@
 								<tr>
 									<th>N°</th>		
 									<th>Nombre</th>
+									<th>Destino</th>
 									<th>Teléfono</th>
 									<th>Correo</th>
 									<th>Dirección</th>
@@ -34,6 +35,7 @@
 								<tr>
 									<td>{{$loop->iteration}}</td>
 									<td>{{$contact->first_name. ' '.$contact->last_name}}</td>	
+									<td>{{$contact->destination->full_name}}</td>									
 									<td>{{$contact->phone}}</td>									
 									<td>{{$contact->email}}</td>									
 									<td>{{$contact->address}}</td>									

@@ -28,6 +28,7 @@ Route::resource('titles', 'TitleController');
 Route::resource('company', 'CompanyController');
 Route::resource('contacts', 'ContactPersonController');
 Route::resource('destinations', 'DestinationController');
+Route::resource('gen-documents', 'GenDocumentController');
 
 Route::get('municipios/{id}', 'DestinationController@getMunicipialities');
 

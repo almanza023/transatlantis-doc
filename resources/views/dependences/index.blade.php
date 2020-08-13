@@ -21,8 +21,9 @@
 								<thead>
 									<tr>
 										<th>N°</th>
-										<th>Categoria</th>
-										<th>Descripcion</th>
+										<th>Nombre</th>
+										<th>Descripción</th>
+									
 										<th>Accion</th>
 									</tr>
 								</thead>
@@ -33,6 +34,7 @@
 										<td>{{$loop->iteration}}</td>
 										<td>{{$dependence->name}}</td>
 										<td>{{$dependence->description}}</td>
+									
 										<td class="text-center">
 											<a href="#modalEdit" data-toggle="modal" data-id="{{$dependence->id_dependence}}" data-name="{{$dependence->name}}"
 												data-description="{{$dependence->description}}"

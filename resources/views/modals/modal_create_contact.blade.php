@@ -32,6 +32,17 @@
         <label class='control-label'>Dirección (*)</label>
         <input class='form-control'  type='email' name="address" id="address">
       </div>
+
+      <div class='form-group'>
+        <label class='control-label'>Destino (*)</label>
+        <select name="id_destination" id="id_destination" class="form-control">
+          <option value="0">Seleccione</option>
+          @foreach ($destinations as $item)
+              <option value="{{ $item->id_destination }}">{{ $item->full_name }}</option>
+          @endforeach
+        </select>
+     
+      </div>
           <div class='form-group'>
             <button class="btn btn-success" type="button" id="Guardar"><i class="fa fa-save"></i> GUARDAR</button>
           </div>     

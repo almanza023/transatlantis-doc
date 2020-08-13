@@ -15,7 +15,7 @@
       </li>
       <li class='launcher'>
         <i class='icon-table'></i>
-        <a href="tables.html">Gestion Documentos</a>
+        <a href="{{ route('gen-documents.index') }}">Gestion Documentos</a>
       </li>
       <br>
       <li class='launcher dropdown hover' >

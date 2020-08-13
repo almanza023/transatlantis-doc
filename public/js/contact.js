@@ -34,6 +34,8 @@ $(function() {
         let pho = $('#phone').val();
         let ema = $('#email').val();
         let add = $('#address').val();
+        let id_des = $('#id_destination').val();
+
         if (first_name.length == 0) {
             $('#first_name').focus();
             $.toast({
@@ -90,6 +92,14 @@ $(function() {
                 position: 'top-left',
                 icon: 'warning'
             })
+        } else if (id_des == 0) {
+            $('#id_destination').focus();
+            $.toast({
+                text: 'Campo Destino  es Obligatorio',
+                showHideTransition: 'slide',
+                position: 'top-left',
+                icon: 'warning'
+            })
         } else {
             $("#form_create").submit();
         }
@@ -102,6 +112,7 @@ $(function() {
         let pho = $('#phone_e').val();
         let ema = $('#email_e').val();
         let add = $('#address_e').val();
+        let id_des = $('#id_destination_e').val();
         if (id.length <= 0) {
 
             $.toast({
@@ -162,6 +173,14 @@ $(function() {
             $('#addres').focus();
             $.toast({
                 text: 'Campo Dirección  es Obligatorio',
+                showHideTransition: 'slide',
+                position: 'top-left',
+                icon: 'warning'
+            })
+        } else if (id_des == 0) {
+            $('#id_destination_e').focus();
+            $.toast({
+                text: 'Campo Destino  es Obligatorio',
                 showHideTransition: 'slide',
                 position: 'top-left',
                 icon: 'warning'

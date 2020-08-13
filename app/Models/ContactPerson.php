@@ -14,6 +14,7 @@ class ContactPerson extends Model
 
     protected $fillable = [        
         'first_name',
+        'id_destination',
         'last_name',
         'address',
         'phone',
@@ -29,4 +30,11 @@ class ContactPerson extends Model
     {
         $this->attributes['last_name'] = strtoupper($value);
     }
+
+    
+    public function destination()
+    {
+        return $this->belongsTo('App\Models\Destination', 'id_destination');
+    }
+    
 }

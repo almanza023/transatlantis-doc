@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dependece;
+use App\Models\Route;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use File;
+
 
 class DependenceController extends Controller
 {
@@ -37,8 +41,26 @@ class DependenceController extends Controller
      */
     public function store(Request $request)
     {
-        Dependece::create($request->all());
+        DB::beginTransaction();
+        try {
+            $dependence=Dependece::create($request->all());
+            $route=new Route();
+            $route->id_dependence=$dependence->id_dependence;
+            $route->description=$dependence->id_dependence.'-'.$dependence->name;
+            $route->save();
+            $path=public_path().'/uploads/'.$route->description;         
+            File::makeDirectory($path, $mode = 0777, true, true);   
+         
+        DB::commit();
+            
         return redirect()->route('dependences.index')->with('success', 'DEPENDENCIA CREADA EXITOSAMENTE');
+        } catch (\Exception $ex) {
+            DB::rollback();
+            return response()->json(['warning' => $ex->getMessage()]);
+     }
+
+       
+       
     }
 
     /**

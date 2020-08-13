@@ -16,4 +16,11 @@ class Dependece extends Model
         'name',
         'description'
     ];
+
+    
+    public function route()
+    {
+        return $this->belongsTo('App\Models\Route', 'id_dependence');
+    }
+    
 }

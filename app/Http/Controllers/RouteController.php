@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Models\ContactPerson;
-use App\Models\Destination;
-use App\Models\Document;
-use App\Models\TypeDocument;
+use App\Models\Route;
 use Illuminate\Http\Request;
 
-class ContactPersonController extends Controller
+class RouteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,10 +14,9 @@ class ContactPersonController extends Controller
      */
     public function index()
     {
+        $routes=Route::orderBy('id_route', 'desc')->get();
         
-        $contacts=ContactPerson::all();
-        $destinations=Destination::all();
-        return view('contact_person.index', compact('contacts', 'destinations'));
+        return view('routes.index', compact('routes'));
     }
 
     /**
@@ -42,8 +37,8 @@ class ContactPersonController extends Controller
      */
     public function store(Request $request)
     {
-        ContactPerson::create($request->all());
-        return redirect()->route('contacts.index')->with('success', 'CONTACTO CREADO EXITOSAMENTE');
+        
+       
     }
 
     /**
@@ -78,14 +73,11 @@ class ContactPersonController extends Controller
     public function update(Request $request, $id)
     {
         
-        $contact=ContactPerson::find($request->id_contact_person);       
-        $contact->first_name=$request->first_name_e;
-        $contact->last_name=$request->last_name_e;
-        $contact->phone=$request->phone_e;
-        $contact->email=$request->email_e;
-        $contact->address=$request->address_e;
-        $contact->save();
-        return redirect()->route('contacts.index')->with('success', 'CONTACTO ACTUALIZADO EXITOSAMENTE');       
+        $route=Route::find($request->id_route);
+        $route->description=$request->description;
+       
+        $route->save();
+        return redirect()->route('routes.index')->with('success', 'RUTA ACTUALIZADA EXITOSAMENTE');       
     }
 
     /**
@@ -96,9 +88,9 @@ class ContactPersonController extends Controller
      */
     public function destroy($id)
     {
-        $contact=ContactPerson::find($id);
-        $contact->status=0;        
-        $contact->save();
-        return redirect()->route('contacts.index')->with('success', 'CONTACTO BLOQUEADO EXITOSAMENTE'); 
+        $route=Route::find($id);
+        $route->status=1;        
+        $route->save();
+        return redirect()->route('routes.index')->with('success', 'RUTA BLOQUEADA EXITOSAMENTE'); 
     }
 }
